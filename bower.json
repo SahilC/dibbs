@@ -1,0 +1,20 @@
+{
+  "name": "dibbs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SahilC/dibbs",
+  "authors": [
+    "Douglas Vaz <douglas1992@gmail.com>", "Sahil Chelaramani <SahilC.2200@gmail.com>"
+  ],
+  "description": "https://github.com/SahilC/dibbs/blob/master/README.md",
+  "main": "server.js",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
