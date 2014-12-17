@@ -27,7 +27,7 @@ module.exports = function(passport) {
     // FACEBOOK ================================================================
     // =========================================================================
     passport.use(new FacebookStrategy({
-
+	profileFields: ['id','significant_other','education','devices','third_party_id','about','work','bio','birthday','cover','email','gender','is_verified','name','name_format','website','political', 'displayName','quotes','religion','timezone', 'photos'],
         // pull in our app id and secret from our auth.js file
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
@@ -43,7 +43,6 @@ module.exports = function(passport) {
 
             // find the user in the database based on their facebook id
             User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
-
                 // if there is an error, stop everything and return that
                 // ie an error connecting to the database
                 if (err)
@@ -61,7 +60,25 @@ module.exports = function(passport) {
                     newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
                     newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
                     newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
-
+		    newUser.facebook.significant_other=
+		    newUser.facebook.education=
+		newUser.facebook.devices=profile.devices
+		newUser.facebook.third_party_id=profile.third_party_id
+		newUser.facebook.about=profile.about
+		newUser.facebook.work=profile.work
+		newUser.facebook.bio=profile.bio
+		newUser.facebook.birthday=profile.birthday
+		newUser.facebook.cover=profile.cover
+		newUser.facebook.gender=profile.gender
+		newUser.facebook.is_verified=profile.is_verified
+		newUser.facebook.name_format=profile.name_format
+		newUser.facebook.website=profile.website
+		newUser.facebook.political=profile.political
+		newUser.facebook.displayName=profile.displayName
+		newUser.facebook.quotes=profile.quotes
+		newUser.facebook.religion=profile.religion
+		newUser.facebook.timezone=profile.timezone
+		newUser.facebook.photos=profile.photos
                     // save our user to the database
                     newUser.save(function(err) {
                         if (err)

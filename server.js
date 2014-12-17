@@ -1,6 +1,6 @@
 var express  = require('express');
 var app      = express();
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 8990;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -36,4 +36,4 @@ require('./config/routes.js')(app, passport); // load our routes and pass in our
 app.listen(port);
 console.log('port:' + port);
 var test = require('./app/services/getData');
-test.getData('http://graph.facebook.com/1287679779/picture?redirect=false&type=large');
+test.getData('http://graph.facebook.com/v2.2/me/picture');

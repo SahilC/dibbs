@@ -5,13 +5,12 @@ module.exports = {
 		http.get(url,function(res){
 			//var response = JSON.parse(res);
 			res.on('data', function(chunk) {
-    		    body += chunk;
-    		});
-    		res.on('end', function() {
-    		    var fbResponse = JSON.parse(body)
-    		    console.log(fbResponse.url);
-    		    return fbResponse.url;
-    		});	
+    		    		body += chunk;
+    			});
+    			res.on('end', function() {
+    		    		var fbResponse = JSON.parse(body);
+				console.log(fbResponse);
+    			});	
 		});
 	}		
 };
