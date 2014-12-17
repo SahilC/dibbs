@@ -3,7 +3,6 @@ var app      = express();
 var port     = process.env.PORT || 8990;
 var mongoose = require('mongoose');
 var passport = require('passport');
-var flash    = require('connect-flash');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -27,7 +26,6 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(session({ secret: 'somerandomsessionkeything' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
